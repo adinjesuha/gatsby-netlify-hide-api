@@ -5,11 +5,16 @@ const Contact= () => {
 
 
   const handleSubmit = e => {
-    const fields = {"fields": {"Name": data.name, "Notes": data.notes}}
-    fetch("https://api.airtable.com/v0/appZIRfmaKuc0qMGi/Table%201 ", {
+
+    const fields = {
+      "fields": {
+        "Name": data.name, 
+        "Notes": data.notes
+      }
+    }
+
+    fetch("../../.netlify/functions/airtable", {
       method: "POST",
-      headers: {"Authorization": `Bearer ${process.env.GATSBY_AIRTABLE_API}`,
-                "Content-Type": "application/json"},
       body: JSON.stringify(fields)
     })
     .then(() => alert("Form Sent!"))
