@@ -1,10 +1,12 @@
 import React, { useState } from "react"
+import { navigate } from "gatsby-link"
 
 const Contact= () => {
   const [ data, setData ] = useState({})
 
 
   const handleSubmit = e => {
+    e.preventDefault();
 
     const fields = {
       "fields": {
@@ -18,10 +20,8 @@ const Contact= () => {
       body: JSON.stringify(fields)
     })
     .then(() => setData({}))
-    .then(() => alert("Form Sent!"))
+    .then(() => navigate('/page-2'))
     .catch(error => alert(error))
-  
-    e.preventDefault();
   }
   
   const handleChange = e => setData({
