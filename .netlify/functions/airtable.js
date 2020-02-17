@@ -1,6 +1,12 @@
+const fetch = require('node-fetch');
+
 exports.handler = async (event, context, callback) => {
 
-  const pass = (body) => {callback(null, {statusCode: 200, body: JSON.stringify(body)})}
+  const pass = (body) => {
+    callback(null, {
+      statusCode: 200, body: JSON.stringify(body)
+    })
+  }
 
   try {
     let response = await fetch("https://api.airtable.com/v0/appZIRfmaKuc0qMGi/Table%201", {
@@ -22,5 +28,5 @@ exports.handler = async (event, context, callback) => {
     }
     await pass(error)
   }
-  
+
 }
