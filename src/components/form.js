@@ -17,6 +17,7 @@ const Contact= () => {
       method: "POST",
       body: JSON.stringify(fields)
     })
+    .then(() => setData({}))
     .then(() => alert("Form Sent!"))
     .catch(error => alert(error))
   
